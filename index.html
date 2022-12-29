@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Plotly</title>
+		<title>Graph Maker</title>
 		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 		<!-- Bootstrap CSS v5.2.1 -->
 		<link
@@ -13,24 +13,11 @@
 			integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
 			crossorigin="anonymous"
 		/>
-		<style>
-			h1 {
-				text-align: center;
-			}
-			#graph {
-				width: clamp(250px, 100%, 700px);
-				height: clamp(200px, 50%, 500px);
-				margin: auto;
-			}
-			#graph .main-svg {
-				width: 90%;
-				height: 90%;
-			}
-		</style>
+		<link rel="stylesheet" href="style.css" />
 	</head>
 	<body>
 		<header>
-			<h1>Graph Maker</h1>
+			<h1 class="mb-5">Graph Maker</h1>
 		</header>
 		<main class="container">
 			<!-- <p>
@@ -39,33 +26,65 @@
 				<strong>Plotly js</strong>
 				an Open Source JavaScript Graphing Library.
 			</p> -->
-			<div id="graph" aria-label="graph"></div>
+			<div id="graph" class="my-5" aria-label="graph"></div>
 			<div class="inputs">
-				<div>
-					<h3>X-axis</h3>
-					<p class="x-axis-input axis-input" contenteditable="true">
+				<div class="row">
+					<h3 class="col-4">X-axis</h3>
+					<p class="x-axis-input col-8 axis-input" contenteditable="true">
 						100, 125, 130, 140, 150, 170, 175, 200, 220
 					</p>
 				</div>
-				<div>
-					<h3>Y-axis</h3>
-					<p class="y-axis-input axis-input" contenteditable="true">
+				<div class="row">
+					<h3 class="col-4">Y-axis</h3>
+					<p class="y-axis-input col-8 axis-input" contenteditable="true">
 						1.681, 1.998, 1.98, 1.961, 1.98, 2.04, 2.048, 2.117, 2.175
 					</p>
 				</div>
-				<div>
-					<h3>Graph Title</h3>
-					<p class="graph-title" contenteditable="true">Title here</p>
+				<div class="row">
+					<h3 class="col-4">Graph Title</h3>
+					<p class="graph-title col-8" contenteditable="true">Title here</p>
 				</div>
-				<div>
-					<h3>X-axis name</h3>
-					<p class="axis-name x-name" contenteditable="true">x-axis</p>
+				<div class="row">
+					<h3 class="col-4">X-axis name</h3>
+					<p class="axis-name x-name col-8" contenteditable="true">x-axis</p>
 				</div>
-				<div>
-					<h3>Y-axis name</h3>
-					<p class="axis-name y-name" contenteditable="true">y-axis</p>
+				<div class="row">
+					<h3 class="col-4">Y-axis name</h3>
+					<p class="axis-name col-8 y-name" contenteditable="true">y-axis</p>
 				</div>
-				<button>update graph</button>
+				<button class="mx-auto btn btn-secondary">Update Graph</button>
+			</div>
+			<div class="my-3">
+				<h2>How to use it ?</h2>
+				<article>
+					<p>It is very easy to use this website just follow this steps :-</p>
+					<ol>
+						<li>
+							<p>
+								Click on the numbers beside the X-axis label and erase all then
+								write your co-ordinates for X-axis
+							</p>
+						</li>
+						<li>
+							<p>
+								Same as X-axis. click on the numbers beside the Y-axis label and
+								erase all then write your co-ordinates for Y-axis
+							</p>
+						</li>
+						<li>
+							<p>
+								Click on "Title here" besides the Graph title and write your
+								title. You can also edit axis title in the same way.
+							</p>
+						</li>
+						<li>
+							<p>
+								Now click the button "Update Graph" to update the above graph
+								with your given data.
+							</p>
+						</li>
+					</ol>
+				</article>
 			</div>
 		</main>
 		<script>
@@ -80,7 +99,7 @@
 				title: "title here",
 				xaxis: {
 					title: "x-axis",
-					showgrid: true,
+					// showgrid: true,
 
 					showline: true,
 				},
