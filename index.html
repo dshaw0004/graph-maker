@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Plotly</title>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+		<!-- Bootstrap CSS v5.2.1 -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+			crossorigin="anonymous"
+		/>
+		<style>
+			h1 {
+				text-align: center;
+			}
+			#graph {
+				width: clamp(250px, 100%, 700px);
+				height: clamp(200px, 50%, 500px);
+				margin: auto;
+			}
+			#graph .main-svg {
+				width: 90%;
+				height: 90%;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Graph Maker</h1>
+		</header>
+		<main class="container">
+			<!-- <p>
+				No need to make a graph for your project or homework manually, give this
+				site a chance to make your graph. This site is made of
+				<strong>Plotly js</strong>
+				an Open Source JavaScript Graphing Library.
+			</p> -->
+			<div id="graph" aria-label="graph"></div>
+			<div class="inputs">
+				<div>
+					<h3>X-axis</h3>
+					<p class="x-axis-input axis-input" contenteditable="true">
+						100, 125, 130, 140, 150, 170, 175, 200, 220
+					</p>
+				</div>
+				<div>
+					<h3>Y-axis</h3>
+					<p class="y-axis-input axis-input" contenteditable="true">
+						1.681, 1.998, 1.98, 1.961, 1.98, 2.04, 2.048, 2.117, 2.175
+					</p>
+				</div>
+				<div>
+					<h3>Graph Title</h3>
+					<p class="graph-title" contenteditable="true">Title here</p>
+				</div>
+				<div>
+					<h3>X-axis name</h3>
+					<p class="axis-name x-name" contenteditable="true">x-axis</p>
+				</div>
+				<div>
+					<h3>Y-axis name</h3>
+					<p class="axis-name y-name" contenteditable="true">y-axis</p>
+				</div>
+				<button>update graph</button>
+			</div>
+		</main>
+		<script>
+			const TESTER = document.getElementById("graph");
+			const x_axis = document.querySelector(".x-axis-input");
+			const axis_input = document.querySelector(".axis-input");
+			const y_axis = document.querySelector(".y-axis-input");
+			const graph_title = document.querySelector(".graph-title");
+			const x_name = document.querySelector(".y-name.axis-name");
+			const y_name = document.querySelector(".axis-name.y-name");
+			let layout = {
+				title: "title here",
+				xaxis: {
+					title: "x-axis",
+					showgrid: true,
+
+					showline: true,
+				},
+				yaxis: {
+					title: "y-axis",
+					showline: true,
+				},
+			};
+			Plotly.plot(
+				TESTER,
+				[
+					{
+						x: x_axis.textContent.split(","),
+						y: y_axis.textContent.split(","),
+					},
+				],
+				layout,
+				{ showSendToCloud: true }
+			);
+
+			document.querySelector("button").addEventListener("click", () => {
+				layout.title = graph_title.textContent;
+				layout.xaxis.title = x_name.textContent;
+				layout.yaxis.title = y_name.textContent;
+				Plotly.react(
+					TESTER,
+					[
+						{
+							x: x_axis.textContent.split(","),
+							y: y_axis.textContent.split(","),
+						},
+					],
+					layout,
+					{ showSendToCloud: true }
+				);
+			});
+		</script>
+
+		<!-- Bootstrap JavaScript Libraries -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+			integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+			crossorigin="anonymous"
+		></script>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+			integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
