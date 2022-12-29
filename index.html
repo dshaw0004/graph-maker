@@ -15,7 +15,7 @@
 		/>
 		<link rel="stylesheet" href="style.css" />
 	</head>
-	<body>
+	<body class="container-fluid">
 		<header>
 			<h1 class="mb-5">Graph Maker</h1>
 		</header>
@@ -26,8 +26,9 @@
 				<strong>Plotly js</strong>
 				an Open Source JavaScript Graphing Library.
 			</p> -->
-			<div id="graph" class="my-5" aria-label="graph"></div>
+			<div id="graph" role="display" class="my-5" aria-label="graph"></div>
 			<div class="inputs">
+				<h2>Enter your graph co-ordinates :--</h2>
 				<div class="row">
 					<h3 class="col-4">X-axis</h3>
 					<p class="x-axis-input col-8 axis-input" contenteditable="true">
@@ -84,6 +85,43 @@
 							</p>
 						</li>
 					</ol>
+				</article>
+			</div>
+			<div class="my-4">
+				<h2>What does these buttons do ?</h2>
+				<img
+					src="./buttons.png"
+					class="buttons-img"
+					alt="buttons on the graph"
+				/>
+				<article>
+					<p>
+						These buttons are provided by the <strong>Plotly js</strong> and
+						they provide few great features.
+					</p>
+					<h3>Those features are</h3>
+					<ul>
+						<li>
+							<p>
+								At first there is a camera icon button by clicking it , it will
+								a screenshot of the graph and store it in your device.
+							</p>
+						</li>
+						<li>
+							<p>
+								Then there is a icon of magnifing glass with a square in it.
+								This button will enable the crop zoom for the graph. Now you can
+								zoom in any part of your graph.
+							</p>
+						</li>
+						<li>
+							<p>
+								Next there is pan button with a plus symbol like arrow icon.
+								After zooming in any part of the graph click this button to
+								scroll through graph.
+							</p>
+						</li>
+					</ul>
 				</article>
 			</div>
 		</main>
