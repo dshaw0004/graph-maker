@@ -39,16 +39,70 @@
 	</head>
 	<body class="container-fluid">
 		<header>
-			<h1 class="mb-5">Graph Maker</h1>
+			<nav class="navbar navbar-expand-lg">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#">
+						<img
+							src="./favicon.svg"
+							alt="Graph Maker Logo"
+							width="30"
+							height="24"
+							class="d-inline-block align-text-top"
+						/>
+						Graph-Maker
+					</a>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarNavDropdown"
+						aria-controls="navbarNavDropdown"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarNavDropdown">
+						<ul class="navbar-nav">
+							<li class="nav-item">
+								<a class="nav-link active" aria-current="page" href="#">Home</a>
+							</li>
+							<!-- <li class="nav-item">
+								<a class="nav-link" href="#">Features</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Pricing</a>
+							</li> -->
+							<li class="nav-item dropdown">
+								<a
+									class="nav-link dropdown-toggle"
+									href="#"
+									role="button"
+									data-bs-toggle="dropdown"
+									aria-expanded="false"
+								>
+									FAQ
+								</a>
+								<ul class="dropdown-menu">
+									<li>
+										<a class="dropdown-item" href="#faq-tuit"
+											>How to use it ?</a
+										>
+									</li>
+									<li>
+										<a class="dropdown-item" href="#faq-buttons"
+											>What does these buttons do ?</a
+										>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
 		</header>
 		<main class="container">
-			<!-- <p>
-				No need to make a graph for your project or homework manually, give this
-				site a chance to make your graph. This site is made of
-				<strong>Plotly js</strong>
-				an Open Source JavaScript Graphing Library.
-			</p> -->
-			<div id="graph" role="display" class="my-5" aria-label="graph"></div>
+			<div id="graph" aria-role="display" class="my-5" aria-label="graph"></div>
 			<div class="inputs">
 				<h2>Enter your graph co-ordinates :--</h2>
 				<div class="row">
@@ -75,9 +129,31 @@
 					<h3 class="col-4">Y-axis name</h3>
 					<p class="axis-name col-8 y-name" contenteditable="true">y-axis</p>
 				</div>
-				<button class="mx-auto btn btn-secondary">Update Graph</button>
+				<form class="row">
+					<label for="download-type" class="col-4"
+						><b>Select your download type:</b></label
+					>
+					<select
+						name="download-type"
+						title="download type of the graph"
+						id="download-type"
+						class="col-1"
+					>
+						<option value="png">png</option>
+						<option value="jpeg">jpeg</option>
+						<option value="svg">svg</option>
+						<option value="webp">webp</option>
+					</select>
+				</form>
+				<button
+					class="mx-auto btn btn-secondary"
+					id="update-graph"
+					type="button"
+				>
+					Update Graph
+				</button>
 			</div>
-			<div class="my-3">
+			<div class="my-3" id="faq-tuit">
 				<h2>How to use it ?</h2>
 				<article>
 					<p>It is very easy to use this website just follow this steps :-</p>
@@ -109,7 +185,7 @@
 					</ol>
 				</article>
 			</div>
-			<div class="my-4">
+			<div class="my-4" id="faq-buttons">
 				<h2>What does these buttons do ?</h2>
 				<img
 					src="./buttons.png"
@@ -124,79 +200,64 @@
 					<h3>Those features are</h3>
 					<ul>
 						<li>
-							<p>
-								At first there is a camera icon button by clicking it , it will
-								a screenshot of the graph and store it in your device.
-							</p>
+							<details>
+								<summary>Download button ( camera icon)</summary>
+								<p>
+									it will take a screenshot of the graph and store it in your
+									device.
+								</p>
+							</details>
 						</li>
 						<li>
-							<p>
-								Then there is a icon of magnifing glass with a square in it.
-								This button will enable the crop zoom for the graph. Now you can
-								zoom in any part of your graph.
-							</p>
+							<details>
+								<summary>Zoom button ( magnifing glass icon)</summary>
+								<p>
+									This button will enable the crop zoom for the graph. Now you
+									can zoom in any part of your graph.
+								</p>
+							</details>
 						</li>
 						<li>
-							<p>
-								Next there is pan button with a plus symbol like arrow icon.
-								After zooming in any part of the graph click this button to
-								scroll through graph.
-							</p>
+							<details>
+								<summary>Pan button</summary>
+								<p>
+									After zooming in any part of the graph click this button to
+									scroll through graph.
+								</p>
+							</details>
+						</li>
+						<li>
+							<details>
+								<summary>Zoom in button ( Plus icon)</summary>
+								<p>This will zoom in your graph.</p>
+							</details>
+						</li>
+						<li>
+							<details>
+								<summary>Zoom out button (Minus icon )</summary>
+								<p>This will zoom out your graph.</p>
+							</details>
+						</li>
+						<li>
+							<details>
+								<summary>Autoscale button</summary>
+								<p>This will rescale the graph to its initial state.</p>
+							</details>
+						</li>
+						<li>
+							<details>
+								<summary>Strike lines</summary>
+								<p>
+									Clicking this will toggle strike lines which will a dotted
+									line to each of the axis when hovering over any point
+								</p>
+							</details>
 						</li>
 					</ul>
 				</article>
 			</div>
 		</main>
-		<script>
-			const TESTER = document.getElementById("graph");
-			const x_axis = document.querySelector(".x-axis-input");
-			const axis_input = document.querySelector(".axis-input");
-			const y_axis = document.querySelector(".y-axis-input");
-			const graph_title = document.querySelector(".graph-title");
-			const x_name = document.querySelector(".y-name.axis-name");
-			const y_name = document.querySelector(".axis-name.y-name");
-			let layout = {
-				title: "title here",
-				xaxis: {
-					title: "x-axis",
-					// showgrid: true,
-
-					showline: true,
-				},
-				yaxis: {
-					title: "y-axis",
-					showline: true,
-				},
-			};
-			Plotly.plot(
-				TESTER,
-				[
-					{
-						x: x_axis.textContent.split(","),
-						y: y_axis.textContent.split(","),
-					},
-				],
-				layout,
-				{ showSendToCloud: true }
-			);
-
-			document.querySelector("button").addEventListener("click", () => {
-				layout.title = graph_title.textContent;
-				layout.xaxis.title = x_name.textContent;
-				layout.yaxis.title = y_name.textContent;
-				Plotly.react(
-					TESTER,
-					[
-						{
-							x: x_axis.textContent.split(","),
-							y: y_axis.textContent.split(","),
-						},
-					],
-					layout,
-					{ showSendToCloud: true }
-				);
-			});
-		</script>
+		<script src="script.js"></script>
 
 		<!-- Bootstrap JavaScript Libraries -->
 		<script

@@ -2,7 +2,8 @@
 	--bg-img: url("https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60");
 }
 * {
-	/* outline: 1px solid red; */
+	margin: 0;
+	padding: 0;
 }
 html {
 	height: 100vh;
@@ -21,6 +22,12 @@ body::after {
 	background-image: var(--bg-img);
 	inset: 0;
 	z-index: -1;
+}
+.navbar.navbar-expand-lg * {
+	color: inherit;
+}
+.navbar-toggler-icon {
+	color: inherit;
 }
 h1 {
 	text-align: center;
