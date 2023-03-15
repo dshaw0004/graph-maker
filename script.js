@@ -10,7 +10,6 @@ let layout = {
 	title: "title here",
 	xaxis: {
 		title: "x-axis",
-		// showgrid: true,
 
 		showline: true,
 	},
@@ -23,13 +22,16 @@ let config = {
 	toImageButtonOptions: {
 		format: download_type.value,
 		filename: graph_title.textContent,
-		// height: 500,
-		// width: 700,
-		scale: 1, // Multiply title/legend/axis/canvas sizes by this factor
+
+		scale: 1,
 	},
 	showSendToCloud: true,
 	displaylogo: false,
 };
+download_type.addEventListener("change", () => {
+	config.toImageButtonOptions.format = download_type.value;
+	console.table(config.toImageButtonOptions.format);
+});
 Plotly.plot(
 	TESTER,
 	[
